@@ -21,8 +21,15 @@ class App extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _counter = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +37,34 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Ini adalah judul"),
+        title: const Text("Ini adalah"),
       ),
       body: Center(
-        child: Container(
-          width: 200,
-          height: 200,
-          color: Colors.red,
-          child: Center(
-            child: Text(
-              "Hello World",
-              style: TextStyle(
-                color: Colors.green[900],
-                backgroundColor: Colors.yellow,
+        child: GestureDetector(
+          onTap: () => setState(() => _counter = 0),
+          child: Container(
+            width: 200,
+            height: 200,
+            color: Colors.red,
+            child: Center(
+              child: Text(
+                "$_counter",
+                style: TextStyle(
+                  color: Colors.green[900],
+                  backgroundColor: Colors.yellow,
+                ),
               ),
             ),
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {
+          setState(() {
+            _counter++;
+          });
+        },
       ),
     );
   }
