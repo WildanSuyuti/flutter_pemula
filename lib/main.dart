@@ -34,10 +34,44 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[200],
+      drawer: Drawer(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(height: 30),
+            TextButton(
+              onPressed: () {
+                debugPrint("tombol home di tekan");
+              },
+              child: const Text("Home"),
+            ),
+            TextButton(
+              onPressed: () {
+                debugPrint("tombol pengaturan di tekan");
+              },
+              child: const Text("Pengaturan"),
+            ),
+            TextButton(
+              onPressed: () {},
+              child: const Text("Akun"),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text("Ini adalah"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.share),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.more_vert),
+          ),
+        ],
       ),
       body: Center(
         child: GestureDetector(
